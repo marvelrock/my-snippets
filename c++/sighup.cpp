@@ -83,6 +83,11 @@ int main(int argc, const char* argv[]) {
       log << "\n";
     } while (ret >= 0);
     log.close();
+    // 取消注释，并使用daemon(0, 0)保证当前工作目录为根目录
+    // 使用pstree -p <daemon-pid>会看到execve执行失败的效果
+    // 这可以解释pc寄存器也被fork了
+    // while (true)
+    // std::this_thread::sleep_for(std::chrono::microseconds(1000));
   } else {  // 子进程循环进入睡眠
     while (true) {
       std::this_thread::sleep_for(std::chrono::microseconds(1000));
