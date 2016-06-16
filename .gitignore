@@ -1,0 +1,6 @@
+a.out
+*.pyc
+*.swp
+.vimprj
+my.vim
+build
